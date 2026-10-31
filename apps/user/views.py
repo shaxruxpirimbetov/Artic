@@ -9,17 +9,17 @@ User = get_user_model()
 
 
 class ListCreateUser(generics.ListCreateAPIView):
-    parser_class = [parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser]
+    parser_classes = [parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser]
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
 
     def get_serializer_class(self):
         if self.request.method == "GET":
-            return [ResponseUserSerializer]
-        return [CreateUserSerializer]
+            return ResponseUserSerializer
+        return CreateUserSerializer
 
 class DetailUser(generics.RetrieveUpdateAPIView):
-    parser_class = [parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser]
+    parser_classes = [parsers.JSONParser, parsers.MultiPartParser, parsers.FormParser]
     queryset = User.objects.all()
     serializer_class = ResponseUserSerializer
 
