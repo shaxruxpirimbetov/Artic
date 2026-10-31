@@ -1,0 +1,10 @@
+django
+djangorestframework
+django-cors-headers
+python-decouple
+djangorestframework-simplejwt
+Pillow
+
+#FOR CLOUDFLARE
+django-storages
+boto3
