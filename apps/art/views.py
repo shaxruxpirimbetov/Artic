@@ -19,7 +19,7 @@ class ListCreateArt(generics.ListCreateAPIView):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 
-        serializer.save(user=self.request.user)
+        serializer.save(user=self.request.user, is_active=True)
         return Response(serializer.data, status=201)
 
 class DetailArt(generics.RetrieveUpdateAPIView):

@@ -8,6 +8,8 @@ class CommentSerializer(serializers.ModelSerializer):
     user = ResponseUserSerializer(read_only=True)
     art = serializers.PrimaryKeyRelatedField(queryset=Art.objects.all(), write_only=True)
     art_detail = ArtSerializer(source="art", read_only=True)
+
     class Meta:
         model = Comment
-        fields = ["user", "art_detail", "art", "content"]
+        fields = ["id", "user", "art_detail", "art", "content"]
+        extra_kwargs = {"id": {"read_only": True}}
